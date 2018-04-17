@@ -31,7 +31,7 @@ public class Ingredient {
         cost = price;
     }
 
-    private void setQuantity(int quant) throws InvalidDataException {
+    public void setQuantity(int quant) throws InvalidDataException {
         if (quant < 0 || quant > 10) {
             throw new InvalidDataException("Invalid quantity passed.");
         }

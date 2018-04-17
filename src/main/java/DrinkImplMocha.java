@@ -1,4 +1,5 @@
 public class DrinkImplMocha {
+    String name = "Caffe Mocha";
     String ingredient1 = "Espresso";
     private int ingr1Amt = 1;
     String ingredient2 = "Cocoa";

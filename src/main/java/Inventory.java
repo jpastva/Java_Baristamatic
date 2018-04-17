@@ -6,9 +6,10 @@ public class Inventory {
 
     private volatile static Inventory instance;
     private final int REFILL_INV = 10;
-    public HashMap<String, Ingredient> ingredientsList = null;
+    public TreeMap<String, Ingredient> ingredientsList = null;
 
-    private Inventory() {
+    private Inventory()
+    {
         ingredientsList = loadIngredients("Ingredients.txt");
     }
 
@@ -23,8 +24,8 @@ public class Inventory {
         return instance;
     }
 
-    public HashMap<String, Ingredient> loadIngredients(String filename) {
-        HashMap<String, Ingredient> ingredientData = new HashMap<String, Ingredient>();
+    public TreeMap<String, Ingredient> loadIngredients(String filename) {
+        TreeMap<String, Ingredient> ingredientData = new TreeMap<String, Ingredient>();
         Ingredient ingr = null;
 
         try {
@@ -58,5 +59,22 @@ public class Inventory {
         ingredientsList.get(ingredient).useQuantity(amt);
     }
 
+    public void refillIngredient() {
+        try {
+            for (Ingredient i : ingredientsList.values()) {
+                i.setQuantity(REFILL_INV);
+            }
+        } catch (InvalidDataException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
+    public String toString() {
+        StringBuilder inventory = new StringBuilder();
+        inventory.append("Inventory:\n");
+        for (Ingredient i : ingredientsList.values()) {
+            inventory.append(i.getName() + ", " + i.getQuantity() + "\n");
+        }
+        return inventory.toString();
+    }
 }

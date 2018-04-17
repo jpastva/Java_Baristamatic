@@ -1,4 +1,5 @@
 public class DrinkImplCoffee implements Drink {
+    String name = "Coffee";
     String ingredient1 = "Coffee";
     private int ingr1Amt = 3;
     String ingredient2 = "Sugar";
