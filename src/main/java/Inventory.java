@@ -1,3 +1,12 @@
+/**
+ * CIS-365 Assignment 2
+ * Reads from .txt file to maintain TreeMap of ingredients in inventory.
+ * Allows use of ingredient based on input name and quantity and restocking
+ * of all ingredients in inventory to specified max quantity.
+ *
+ * @author Joelen Pastva
+ */
+
 import java.io.FileNotFoundException;
 import java.util.*;
 import java.io.File;
@@ -6,10 +15,9 @@ public class Inventory {
 
     private volatile static Inventory instance;
     private final int REFILL_INV = 10;
-    public TreeMap<String, Ingredient> ingredientsList = null;
+    public TreeMap<String, Ingredient> ingredientsList;
 
-    private Inventory()
-    {
+    private Inventory() {
         ingredientsList = loadIngredients("Ingredients.txt");
     }
 

@@ -1,3 +1,10 @@
+/**
+ * CIS-365 Assignment 2
+ * Drink interface for coffee drinks
+ *
+ * @author Joelen Pastva
+ */
+
 import java.util.ArrayList;
 
 public interface Drink {
@@ -6,5 +13,6 @@ public interface Drink {
 
     boolean haveInventory();
 
-    void updateInventory();
+    void dispenseDrink();
+
 }

@@ -1,22 +1,30 @@
+/**
+ * CIS-365 Assignment 2
+ * Americano implements Drink interface, stores drink name and recipe,
+ * dispenses drink, returns drink cost, checks if in stock.
+ *
+ * @author Joelen Pastva
+ */
+
+import java.text.DecimalFormat;
+
 public class DrinkImplAmericano implements Drink {
     String name = "Caffe Americano";
     String ingredient1 = "Espresso";
     int ingr1Amt = 3;
 
     public DrinkImplAmericano() {
-        if (haveInventory()) {
-            updateInventory();
-            System.out.println("Caffe Americano has been dispensed.");
-        } else
-            System.out.println("Sorry, we're out of the ingredients to make that beverage.");
     }
 
+    @Override
     public double getDrinkCost() {
-        double drinkCost = Inventory.getInstance().ingredientsList.get(ingredient1).getCost() * ingr1Amt;
+        double ingrCost = Inventory.getInstance().ingredientsList.get(ingredient1).getCost() * ingr1Amt;
+        double drinkCost = ingrCost;
 
         return drinkCost;
     }
 
+    @Override
     public boolean haveInventory() {
         boolean stocked = true;
         int stock1 = Inventory.getInstance().ingredientsList.get(ingredient1).getQuantity();
@@ -27,12 +35,24 @@ public class DrinkImplAmericano implements Drink {
         return stocked;
     }
 
-    public void updateInventory() {
+    @Override
+    public void dispenseDrink() {
         try {
             Inventory.getInstance().useIngredient(ingredient1, ingr1Amt);
         } catch (InvalidDataException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder drink = new StringBuilder();
+        DecimalFormat df = new DecimalFormat("#.00");
+        drink.append(name + ", $");
+        drink.append(df.format(getDrinkCost()));
+        drink.append(", " + haveInventory());
+
+        return drink.toString();
     }
 
 }
