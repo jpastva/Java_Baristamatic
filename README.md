@@ -9,4 +9,4 @@ drinks by combining these ingredients in different amounts. It also determines t
 a drink based on its component ingredients. Drink selections are made by selecting a number (1-6),
 which corresponds to a drink displayed on the menu. Ingredients are depleted with each drink dispensed,
 and the updated inventory of ingredients is displayed after each drink selection. Ingredients can 
-be refilled by entering 'R' or 'r.' Exit the program by entering 'Q' of 'q.' 
+be refilled by entering 'R' or 'r.' Exit the program by entering 'Q' or 'q.' 
